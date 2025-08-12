@@ -1,13 +1,27 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { Helmet } from "react-helmet-async";
+import { HeroCarousel } from "@/components/home/HeroCarousel";
+import { CategoryStrip } from "@/components/home/CategoryStrip";
+import { products } from "@/data/products";
+import { ProductGrid } from "@/components/products/ProductGrid";
 
 const Index = () => {
+  const featured = products.slice(0, 8);
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
-    </div>
+    <main>
+      <Helmet>
+        <title>CookCraft | Premium Kitchen Utensils Online</title>
+        <meta name="description" content="Shop premium kitchenware, cookware, and appliances. Explore top brands with fast delivery across India." />
+        <link rel="canonical" href="/" />
+      </Helmet>
+
+      <CategoryStrip />
+      <HeroCarousel />
+
+      <section className="container mx-auto px-4 mt-10">
+        <h1 className="text-2xl md:text-3xl font-semibold mb-4">Best Sellers in Kitchen & Cookware</h1>
+        <ProductGrid products={featured} />
+      </section>
+    </main>
   );
 };
 
